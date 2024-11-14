@@ -1,0 +1,22 @@
+version: '3.0'
+
+services:
+  tf_course_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '7001:3000'
+      - '50053:50051'
+    networks:
+      - sisfo-remake-tekfunghan
+    restart: unless-stopped
+    env_file:
+      - ./docker.env
+    volumes:
+      - ./../../proto:/app/proto
+      - ./storage:/app/storage
+
+networks:
+  sisfo-remake-tekfunghan:
+    external: true
