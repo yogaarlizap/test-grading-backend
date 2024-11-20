@@ -17,7 +17,7 @@ const startServer = async () => {
   })
 
   await redisClient.connect().catch(console.error)
-
+  console.log("connected to redis");
   return redisClient
 }
 
